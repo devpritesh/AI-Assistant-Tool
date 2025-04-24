@@ -3,4 +3,5 @@ transformers==4.28.1
 torch==2.0.1
 PyPDF2==3.0.1
 python-docx==0.8.11
+sentencepiece
 gunicorn
