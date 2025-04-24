@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Language Translator</h2>
+
+    <!-- Input Section -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Enter Text to Translate</h3>
+        </div>
+        <div class="card-body">
+            <!-- Input Text Area -->
+            <div class="mb-3">
+                <textarea class="form-control" id="input-text" rows="4" placeholder="Enter text here to translate..."></textarea>
+            </div>
+
+            <!-- Language Selection Dropdowns -->
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-md-5">
+                        <select class="form-select" id="source-lang">
+                            <option value="en_XX">English</option>
+                            <option value="es_XX">Spanish</option>
+                            <option value="fr_XX">French</option>
+                            <option value="hi_IN">Hindi</option>
+                            <option value="zh_CN">Chinese</option>
+                            <option value="mr_IN">Marathi</option>
+                            <option value="ta_IN">தமிழ் (Tamil)</option>
+                            <option value="bn_IN">বাংলা (Bengali)</option>
+                            <option value="ml_IN">മലയാളം (Malayalam)</option>
+                            <option value="te_IN">తెలుగు (Telugu)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <span class="display-6">→</span>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-select" id="target-lang">
+                            <option value="en_XX">English</option>
+                            <option value="es_XX">Spanish</option>
+                            <option value="fr_XX">French</option>
+                            <option value="hi_IN">Hindi</option>
+                            <option value="zh_CN">Chinese</option>
+                            <option value="mr_IN">Marathi</option>
+                            <option value="ta_IN">தமிழ் (Tamil)</option>
+                            <option value="bn_IN">বাংলা (Bengali)</option>
+                            <option value="ml_IN">മലയാളം (Malayalam)</option>
+                            <option value="te_IN">తెలుగు (Telugu)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Translate and Clear Buttons -->
+            <div class="d-flex gap-2 mb-3">
+                <button class="btn btn-primary w-100" onclick="translateText()">
+                    <i class="fas fa-language"></i> Translate
+                </button>
+                <button class="btn btn-outline-secondary w-100" onclick="clearText()">
+                    <i class="fas fa-trash-alt"></i> Clear
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Translation Result Section -->
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">Translation Result</h3>
+        </div>
+        <div class="card-body">
+            <!-- Loading Spinner -->
+            <div class="spinner-border text-primary d-none" id="translation-loader"></div>
+
+            <!-- Translation Result -->
+            <p class="card-text" id="translation-result" style="white-space: pre-wrap;"></p>
+
+            <!-- Listen Button with Label -->
+            <!-- Listen Button with Label -->
+                <div class="d-flex align-items-center gap-2 mt-3">
+                    <div class="rounded-box text-muted">
+                        Select translate text to listen:
+                    </div>
+                    <button id="listen-button" class="btn btn-secondary" onclick="speakText()">
+                        <i class="fas fa-volume-up"></i> Listen
+                    </button>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

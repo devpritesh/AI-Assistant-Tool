@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0 text-center">Text Summarizer</h2>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <textarea class="form-control" id="summarize-text" rows="4" 
+                          placeholder="Paste text here or upload a file"></textarea>
+            </div>
+            
+            <!-- File Upload Section -->
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="summarize-file" 
+                       accept=".txt,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                <button class="btn btn-outline-secondary" onclick="uploadFile()">
+                    <i class="fas fa-upload"></i> Upload File
+                </button>
+            </div>
+            
+            <!-- File Upload Progress/Error -->
+            <div class="text-center">
+                <div class="spinner-border text-primary d-none" 
+                     role="status" id="upload-spinner">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-danger d-none" id="file-error">
+                    Only TXT, PDF, and DOC/DOCX files are supported.
+                </p>
+            </div>
+            
+            <!-- Summarize Button -->
+            <button class="btn btn-primary w-100 mt-3" onclick="summarizeText()">
+                <i class="fas fa-compress-arrows-alt"></i> Summarize
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary Result Card -->
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0 text-center">Summary Result</h3>
+        </div>
+        <div class="card-body">
+            <!--Summarization Spinner -->
+            <div class="spinner-border text-primary d-none" 
+                 role="status" id="summarize-loader">
+                <span class="visually-hidden">Summarizing...</span>
+            </div>
+            <p class="card-text" id="summary-result" style="white-space: pre-wrap;"></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
